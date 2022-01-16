@@ -16,11 +16,11 @@ export default function ListTile({
       onPress={() => onTap(id)}
       onLongPress={() => onLongTap(id)}>
       <View style={_x.tile}>
-        <Checkbox
-          status={checked ? 'checked' : 'unchecked'}
-          onValueChange={() => onTap(id)}
-          style={_x.checkbox}
-        />
+          <Checkbox
+            status={checked ? 'checked' : 'unchecked'}
+            // onValueChange={() => onTap(id)}
+            style={_x.checkbox}
+          />
 
         <Text
           style={[

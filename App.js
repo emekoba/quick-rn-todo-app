@@ -33,7 +33,7 @@ export default function App() {
       todoId,
       isOpen: true,
       mode: TodoModal_Modes.EDITING,
-      todo: {...todo[todoId]},
+      todo: { ...todo[todoId] },
     });
   }
 
@@ -70,23 +70,62 @@ export default function App() {
       </View>
 
       <View style={_x.main}>
-        {Object.keys(todo)
-          .filter(
-            (e) =>
-              todo[e]['title'].toLowerCase().indexOf(filter.toLowerCase()) !==
-              -1
-          )
-          .map((e) => (
-            <ListTile
-              key={e}
-              id={e}
-              title={todo[e]['title']}
-              content={todo[e]['content']}
-              checked={todo[e]['checked']}
-              onLongTap={editTodo}
-              onTap={tileTap}
-            />
-          ))}
+        {Object.keys(todo).filter((e) => todo[e]['checked'] !== true).length >
+          0 && (
+          <>
+            <Text style={[_x.subtitle, { color: 'tomato' }]}>Undone</Text>
+
+            {Object.keys(todo)
+              .filter((e) => todo[e]['checked'] !== true)
+              .filter(
+                (e) =>
+                  todo[e]['title']
+                    .toLowerCase()
+                    .indexOf(filter.toLowerCase()) !== -1
+              )
+              .map((e) => (
+                <ListTile
+                  key={e}
+                  id={e}
+                  title={todo[e]['title']}
+                  content={todo[e]['content']}
+                  checked={todo[e]['checked']}
+                  onLongTap={editTodo}
+                  onTap={tileTap}
+                />
+              ))}
+
+            <View style={{ height: 50 }} />
+          </>
+        )}
+
+        {Object.keys(todo).filter((e) => todo[e]['checked'] === true).length >
+          0 && (
+          <>
+            <Text style={[_x.subtitle, { color: 'lightgreen' }]}>
+              Compeleted
+            </Text>
+            {Object.keys(todo)
+              .filter((e) => todo[e]['checked'] === true)
+              .filter(
+                (e) =>
+                  todo[e]['title']
+                    .toLowerCase()
+                    .indexOf(filter.toLowerCase()) !== -1
+              )
+              .map((e) => (
+                <ListTile
+                  key={e}
+                  id={e}
+                  title={todo[e]['title']}
+                  content={todo[e]['content']}
+                  checked={todo[e]['checked']}
+                  onLongTap={editTodo}
+                  onTap={tileTap}
+                />
+              ))}
+          </>
+        )}
       </View>
 
       <FAB
@@ -132,6 +171,12 @@ const _x = StyleSheet.create({
     // backgroundColor: 'lightgrey',
     backgroundColor: '#232832',
     padding: 10,
+  },
+  subtitle: {
+    borderBottomWidth: 1,
+    borderColor: '#383E45',
+    marginBottom: 10,
+    paddingBottom: 10,
   },
   fab: {
     position: 'absolute',
