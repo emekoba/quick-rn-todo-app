@@ -37,7 +37,7 @@ export function TodoModal({
       title: mode === TodoModal_Modes.EDITING ? todo['title'] : '',
       content: mode === TodoModal_Modes.EDITING ? todo['content'] : '',
     });
-  }, [mode]);
+  }, [mode, todo]);
 
   return (
     <>
@@ -57,6 +57,7 @@ export function TodoModal({
                 style={[_x.col1, _x.search]}
                 textAlignVertical={'top'}
                 multiline={true}
+                placeholderTextColor="#000"
               />
 
               <TextInput
@@ -66,6 +67,7 @@ export function TodoModal({
                 textAlignVertical={'top'}
                 style={[_x.col2, _x.search]}
                 multiline={true}
+                placeholderTextColor="#000"
               />
 
               <View style={_x.col3}>

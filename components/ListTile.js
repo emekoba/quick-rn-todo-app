@@ -50,7 +50,7 @@ const _x = StyleSheet.create({
     // paddingRight: 15,
     width: '100%',
     color: 'white',
-    marginTop: 5,
+    marginTop: 7,
     paddingRight: 40,
   },
   // checkbox: { marginTop: 3 },

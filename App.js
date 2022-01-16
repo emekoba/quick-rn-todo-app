@@ -33,7 +33,7 @@ export default function App() {
       todoId,
       isOpen: true,
       mode: TodoModal_Modes.EDITING,
-      todo: todo[todoId],
+      todo: {...todo[todoId]},
     });
   }
 
